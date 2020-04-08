@@ -41,7 +41,7 @@ class LoginController extends Controller
                 Session::put('kelas', $walikelas->kelas);
                 return redirect(route('dashboard-walikelas'));
             elseif(Auth::user()->role_id === 2): 
-                return redirect(route('Dashboard'));
+                return redirect(route('dashboard-perpus'));
             elseif(Auth::user()->role_id === 3): 
                 return redirect(route('Dashboard'));
             elseif(Auth::user()->role_id === 4):

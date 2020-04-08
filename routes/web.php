@@ -49,4 +49,20 @@ Route::group(['prefix' => 'walikelas'], function() {
     });
 });
 
+Route::group(['prefix' => 'perpustakaan'], function() {
+    // Route::middleware('page_denied:Dashboard')->group(function(){
+    //     Route::get('/home', 'DashboardController@index')->name('Dashboard');
+    // });
+    Route::group(['prefix' => 'Dasboard'], function() {
+        Route::get('/Dashboard', 'PerpusDashboardController@index')->name('dashboard-perpus');
+    });
+
+    Route::group(['prefix' => 'walikelas'], function() {
+        Route::get('/walikelas-view', 'PerpusWalikelasController@index')->name('walikelas-view');
+        Route::get('/walikelas-cari', 'PerpusWalikelasController@walikelassearch')->name('walikelas-cari');
+        Route::get('/walikelas-tambah', 'PerpusWalikelasController@add')->name('walikelas-tambah');
+        Route::post('/walikelas-insert', 'PerpusWalikelasController@create')->name('walikelas-insert');
+    });
+});
+
 Route::get('/logout', 'LoginController@logout')->name("logout");

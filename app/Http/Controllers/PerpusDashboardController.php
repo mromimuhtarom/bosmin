@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+use DB;
 
 class PerpusDashboardController extends Controller
 {
@@ -13,7 +15,8 @@ class PerpusDashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.perpustakaan.dashboard');
+        $role = DB::table('role')->where('role_id', '=', Session::get('roleId'))->first();
+        return view('pages.perpustakaan.dashboard', compact('role'));
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('menuname')
-@include('pages.walikelas.menu')
+@include('pages.perpustakaan.menu')
 @endsection
 
 @section('content')
