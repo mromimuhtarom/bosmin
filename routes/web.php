@@ -62,6 +62,25 @@ Route::group(['prefix' => 'perpustakaan'], function() {
         Route::get('/walikelas-cari', 'PerpusWalikelasController@walikelassearch')->name('walikelas-cari');
         Route::get('/walikelas-tambah', 'PerpusWalikelasController@add')->name('walikelas-tambah');
         Route::post('/walikelas-insert', 'PerpusWalikelasController@create')->name('walikelas-insert');
+        Route::post('/walikelas-update', 'PerpusWalikelasController@update')->name('walikelas-update');
+        Route::delete('/walikelas-delete', 'PerpusWalikelasController@destroy')->name('walikelas-delete');
+    });
+
+    Route::group(['prefix' => 'siswa'], function() {
+        Route::get('/siswa-view', 'PerpusSiswaController@index')->name('siswa-view');
+        Route::get('/siswa-cari', 'PerpusSiswaController@siswasearch')->name('siswa-cari');
+        Route::get('/siswa-tambah', 'PerpusSiswaController@add')->name('siswa-tambah');
+        Route::post('/siswa-insert', 'PerpusSiswaController@create')->name('siswa-insert');
+        Route::post('/siswa-update', 'PerpusSiswaController@update')->name('siswa-update');
+        Route::delete('/siswa-delete', 'PerpusSiswaController@destroy')->name('siswa-delete');
+    });
+
+    Route::group(['prefix' => 'list_buku'], function() {
+        Route::get('/list_buku-view', 'PerpusListBukuController@index')->name('list_buku-view');
+        Route::get('/list_buku-cari', 'PerpusListBukuController@listbukusearch')->name('list_buku-cari');
+        Route::get('/list_buku-tambah', 'PerpusListBukuController@add')->name('list_buku-tambah');
+        Route::post('/list_buku-insert', 'PerpusListBukuController@create')->name('list_buku-insert');
+        Route::post('/list_buku-update', 'PerpusListBukuController@update')->name('list_buku-update');
     });
 });
 

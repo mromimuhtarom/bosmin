@@ -54,7 +54,7 @@
               <i class="fa fa-book" style="color:black;font-size:10rem;"></i>
             </div>
             <div class="media-body">
-              <h2 class="media-heading text-uppercase">Peminjaman Buku kelas {{ Session::get('kelas') }} <b>{{ number_format(count($peminjaman_kelas)) }}</b></h2>
+              <h2 class="media-heading text-uppercase">Peminjaman Buku kelas {{ Session::get('nama_kelas') }} <b>{{ number_format(count($peminjaman_kelas)) }}</b></h2>
             </div>
           </div>                
         </div>           
@@ -64,7 +64,7 @@
               <i class="fa fa-check-circle" style="color:green;font-size:10rem;"></i>
             </div>
             <div class="media-body">
-              <h2 class="media-heading text-uppercase">Pengembalian Buku kelas {{ Session::get('kelas') }} <b>{{ number_format(count($pengembalian_kelas)) }}</b></h2>
+              <h2 class="media-heading text-uppercase">Pengembalian Buku kelas {{ Session::get('nama_kelas') }} <b>{{ number_format(count($pengembalian_kelas)) }}</b></h2>
             </div>
           </div>                
         </div>             
@@ -74,7 +74,7 @@
               <i class="fa fa-times-circle" style="color:red;font-size:10rem;"></i>
             </div>
             <div class="media-body">
-              <h2 class="media-heading text-uppercase">Buku Hilang kelas {{ Session::get('kelas') }} <b>{{ number_format(count($buku_hilang_kelas)) }}</b></h2>  
+              <h2 class="media-heading text-uppercase">Buku Hilang kelas {{ Session::get('nama_kelas') }} <b>{{ number_format(count($buku_hilang_kelas)) }}</b></h2>  
             </div>        
           </div>                
         </div>  

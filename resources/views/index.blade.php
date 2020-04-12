@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">  
     <title>Visual Admin Dashboard - Home</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
@@ -17,17 +18,31 @@
     <link href="/css/templatemo-style.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/button.css">
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script type="text/javascript" src="/js/bootstrap-filestyle.min.js"></script>  <!-- http://markusslima.github.io/bootstrap-filestyle/ -->
   </head>
+  <style>
+    .editable-submit::before {
+      font-family: "Font Awesome 5 Free"; 
+      font-weight: 900; 
+      content: "\2713";
+    }
+    .editable-cancel::before {
+      font-family: "Font Awesome 5 Free"; 
+      font-weight: bold; 
+      content: "\00D7";
+    }
+  </style>
   <body>  
     <!-- Left column -->
     <div class="templatemo-flex-row">
@@ -54,16 +69,69 @@
     </div>
     
     <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>     <!-- jQuery -->
-    <script src="/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
-    <script type="text/javascript" src="/js/bootstrap-filestyle.min.js"></script>  <!-- http://markusslima.github.io/bootstrap-filestyle/ -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/js/bootstrap-editable.min.js"></script>
     <script>
       // autoclose alert
       $(".alert").fadeTo(2000, 500).slideUp(500, function(){
         $(".alert").slideUp(500);
       });
     </script>
+    <script type="text/javascript">
+      $(document).ready(function() { 
+          $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+
+   
+          
+          //make username editable
+          $('#username').editable();
+          
+          //make status editable
+          $('.txtbxt').editable({
+            mode :'inline',
+            validate: function(value) {
+              if($.trim(value) == '') {
+                return 'This field is required';
+              }
+            }
+          });
+
+
+          $('.activestat').editable({
+            mode:'inline',
+            source: [
+                  {value: '', text: 'Pilih Status'},
+                  {value: 1, text: 'Aktif'},
+                  {value: 2, text: 'Tidak Aktif'},
+            ],
+            validate: function(value) {
+              if($.trim(value) == '') {
+                return 'This field is required';
+              }
+            }
+          });
+
+          $('.kelastxt').editable({
+            mode:'inline',
+            source: [
+                  {value: '', text: 'Pilih Status'},
+                  {value: 1, text: 'Aktif'},
+                  {value: 2, text: 'Tidak Aktif'},
+            ],
+            validate: function(value) {
+              if($.trim(value) == '') {
+                return 'This field is required';
+              }
+            }
+          });
+
+
+      });
+      </script>
     <script>
       /* Google Chart 
       -------------------------------------------------------------------*/

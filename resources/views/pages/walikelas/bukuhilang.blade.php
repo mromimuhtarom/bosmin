@@ -54,7 +54,6 @@
             <td>Nama Buku </td>
             <td>Tanggal Kehilangan </td>
             <td>Kelas </td>
-            <td>Delete</td>
           </tr>
         </thead>
         <tbody>
@@ -67,14 +66,6 @@
             <td>{{ $bkhlng->nama_buku }}</td>
             <td>{{ $bkhlng->tgl_kehilangan }}</td>
             <td>{{ $bkhlng->kelas }}</td>
-            <td>
-              <form action="{{ route('buku-hilang-delete') }}" method="post">
-                @csrf
-                @method('DELETE')
-                <input type="hidden" name="pk" value="{{ $bkhlng->id_buku_hilang }}">
-                <button type="submit" class="templatemo-link">Delete </button>
-              </form>
-            </td>
           </tr> 
           @endforeach           
         </tbody>

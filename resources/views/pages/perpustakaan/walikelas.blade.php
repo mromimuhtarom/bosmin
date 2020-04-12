@@ -75,13 +75,20 @@
         <tbody>
             @foreach ($data_walikelas as $wkl)
             <tr>
-                <td><a href="#" class="txtbxt" data-type="text" data-placement="right" data-title="Enter username">{{ $wkl->op_id }}</a></td>
-                <td>{{ $wkl->username }}</td>
-                <td>{{ $wkl->id_wali_kelas }}</td>
-                <td>{{ $wkl->fullname }}</td>
-                <td>{{ $wkl->kelas }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ $wkl->op_id }}</td>
+                <td><a href="#" class="txtbxt" data-type="text" data-pk="{{ $wkl->op_id }}" data-name="username" data-placement="right" data-title="Enter username" data-url="{{ route('walikelas-update') }}">{{ $wkl->username }}</a></td>
+                <td><a href="#" class="txtbxt" data-type="text" data-pk="{{ $wkl->id_wali_kelas }}" data-name="id_wali_kelas" data-placement="right" data-title="Enter username" data-url="{{ route('walikelas-update') }}">{{ $wkl->id_wali_kelas }}</a></td>
+                <td><a href="#" class="txtbxt" data-type="text" data-pk="{{ $wkl->id_wali_kelas }}" data-name="fullname" data-placement="right" data-title="Enter username" data-url="{{ route('walikelas-update') }}">{{ $wkl->fullname }}</a></td>
+                <td><a href="#" class="kelastxt" data-type="select" data-pk="{{ $wkl->id_wali_kelas }}" data-name="id_kelas" data-placement="right" data-title="Enter username" data-url="{{ route('walikelas-update') }}">{{ $wkl->nama_kelas }}</a></td>
+                <td><a href="#" class="txtbxt" data-type="password" data-pk="{{ $wkl->op_id }}" data-name="password" data-placement="right" data-title="Enter username" data-url="{{ route('walikelas-update') }}">***</a></td>
+                <td>
+                  <form action="{{ route('walikelas-delete') }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input type="hidden" name="pk" value="{{ $wkl->id_wali_kelas }}">
+                    <button type="submit" class="templatemo-link">Delete </button>
+                  </form>
+                </td>
             </tr>          
             @endforeach
         </tbody>
@@ -89,18 +96,32 @@
     </div>                          
 </div>   
 
-<script>
-$(document).ready(function() {
-    //toggle `popup` / `inline` mode
-    $.fn.editable.defaults.mode = 'popup';     
-    
-    //make username editable
-    $('#username').editable();
-    
-    //make status editable
-    $('#status').editable({
-      mode :'inline'
-    });
-});
-</script>
+
+<script type="text/javascript">
+  $(document).ready(function() { 
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+      $('.kelastxt').editable({
+        mode:'inline',
+        source: [
+              {value: '', text: 'Pilih Kelas'},
+              @foreach($data_kelas as $kelas) 
+              {value: {{ $kelas->id_kelas }}, text: '{{ $kelas->nama_kelas }}'},
+              @endforeach
+        ],
+        validate: function(value) {
+          if($.trim(value) == '') {
+            return 'This field is required';
+          }
+        }
+      });
+
+
+  });
+  </script>
+
 @endsection

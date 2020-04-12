@@ -1,39 +1,14 @@
 @extends('index')
 
 @section('menuname')
-@include('pages.walikelas.menu')
+@include('pages.perpustakaan.menu')
 @endsection
 
 @section('content')
-@if (count($errors) > 0)
-<div class="error-val">
-  <div class="alert alert-danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>  
-      @endforeach
-    </ul>
-  </div>
-</div>
-@endif
-
-@if (\Session::has('alert'))
-    <div class="alert alert-danger">
-        <div>{{Session::get('alert')}}</div>
-    </div>        
-@endif
-
-
-@if (\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{\Session::get('success')}}</p>
-    </div>
-@endif
-
 <div class="templatemo-content-container">
     <div class="templatemo-flex-row flex-content-row">
       <div class="templatemo-content-widget white-bg col-2">
-          <form action="{{ route('peminjaman-buku-cari') }}" method="get">
+          <form action="{{ route('buku-hilang-cari') }}" method="get">
             <input type="text" class="form-control" style="margin-bottom:1%;" name="nama_buku" placeholder="Nama Buku / ID Buku" value="{{ $nama_buku }}">
             <input type="text" class="form-control" style="margin-bottom:1%;" name="nama_siswa" placeholder="Nama Siswa / ID Siswa" value="{{ $nama_siswa }}">
             <table border="0" width="100%" style="margin-bottom:1%;">
@@ -56,11 +31,11 @@
     <div class="templatemo-flex-row flex-content-row">
         <div class="templatemo-content-widget white-bg col-2">
             <div align="center" style="font-size:25px;font-weight:bold">
-                Data Peminjaman Buku
+                Data Buku Hilang
             </div>
             <div>
-                <form action="{{ route('peminjaman-buku-tambah')}}">
-                    <button type="submit" class="myButton-add" data-toggle="modal" data-target="#myModal">Tambah Peminjaman Buku</button>
+                <form action="{{ route('buku-hilang-tambah')}}">
+                    <button type="submit" class="myButton-add" data-toggle="modal" data-target="#myModal">Tambah Buku Hilang</button>
                 </form>
             </div>
         </div>
@@ -77,21 +52,20 @@
             <td>Nama Siswa</td>
             <td>Kelas Buku</td>
             <td>Nama Buku </td>
-            <td>Tanggal Peminjaman </td>
+            <td>Tanggal Kehilangan </td>
             <td>Kelas </td>
-            <td>Delete</td>
           </tr>
         </thead>
         <tbody>
-          @foreach($peminjaman as $pmjn)
+          @foreach($bukuhilang as $bkhlng)
           <tr>
-            <td>{{ $pmjn->peminjaman_id }}</td>
-            <td>{{ $pmjn->id_siswa}}</td>
-            <td>{{ $pmjn->nama_siswa}}</td>
-            <td>{{ $pmjn->buku_id }}</td>
-            <td>{{ $pmjn->nama_buku }}</td>
-            <td>{{ $pmjn->tgl_peminjaman }}</td>
-            <td>{{ $pmjn->kelas }}</td>
+            <td>{{ $bkhlng->id_buku_hilang }}</td>
+            <td>{{ $bkhlng->id_siswa}}</td>
+            <td>{{ $bkhlng->nama_siswa}}</td>
+            <td>{{ $bkhlng->buku_id }}</td>
+            <td>{{ $bkhlng->nama_buku }}</td>
+            <td>{{ $bkhlng->tgl_kehilangan }}</td>
+            <td>{{ $bkhlng->kelas }}</td>
           </tr> 
           @endforeach           
         </tbody>

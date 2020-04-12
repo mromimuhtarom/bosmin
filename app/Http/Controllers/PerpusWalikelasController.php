@@ -20,12 +20,19 @@ class PerpusWalikelasController extends Controller
         $username = '';
         $fullname = '';
         $kelas = '';
-        $api_url = 'http://192.168.1.2:3000/api/perpus/walikelasview';
+        $api_url = 'http://192.168.1.3:3000/api/perpus/walikelasview';
  
         $json_data = file_get_contents($api_url);
         
         $data_walikelas = json_decode($json_data);
-        return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
+
+        $api_url_kelas = 'http://192.168.1.3:3000/api/kelas';
+ 
+        $json_data_kelas = file_get_contents($api_url_kelas);
+        
+        $data_kelas = json_decode($json_data_kelas);
+
+        return view('pages.perpustakaan.walikelas', compact('data_kelas', 'data_walikelas', 'username', 'fullname', 'kelas'));
     }
 
     public function walikelassearch(Request $request) 
@@ -35,7 +42,7 @@ class PerpusWalikelasController extends Controller
         $kelas    = $request->kelas;
 
         if($username != NULL && $fullname != NULL && $kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.2:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -43,7 +50,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($username != NULL && $fullname != NULL):
-            $api_url_walikelas = 'http://192.168.1.2:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -51,7 +58,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($username != NULL && $kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.2:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -59,7 +66,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($fullname != NULL && $kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.2:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -67,7 +74,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($username != NULL): 
-            $api_url_walikelas = 'http://192.168.1.2:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -75,7 +82,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($fullname != NULL):
-            $api_url_walikelas = 'http://192.168.1.2:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -83,7 +90,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.2:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -91,7 +98,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         else:
-            $api_url = 'http://192.168.1.2:3000/api/perpus/walikelasview';
+            $api_url = 'http://192.168.1.3:3000/api/perpus/walikelasview';
  
             $json_data = file_get_contents($api_url);
             
@@ -102,7 +109,13 @@ class PerpusWalikelasController extends Controller
 
     public function add()
     {
-        return view('pages.perpustakaan.addwalikelas');
+        $api_url = 'http://192.168.1.3:3000/api/kelas';
+ 
+        $json_data = file_get_contents($api_url);
+        
+        $data_kelas = json_decode($json_data);
+
+        return view('pages.perpustakaan.addwalikelas', compact('data_kelas'));
     }
 
     /**
@@ -122,7 +135,7 @@ class PerpusWalikelasController extends Controller
             'username' => 'required',
             'password' => 'required',
             'fullname' => 'required',
-            'kelas'    => 'required',
+            'id_kelas'    => 'required',
             'nip'      => 'required'
         ]);
         
@@ -197,9 +210,80 @@ class PerpusWalikelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $pk    = $request->pk;
+        $name  = $request->name;
+        $value = $request->value;
+
+        if($name === 'username' || $name === 'password'): 
+            if($name === 'password'):
+                $value = bcrypt($value);
+                $name = "Kata Sandi";
+            endif;
+            $walikelas = DB::table('operator')->where('op_id', '=', $pk)->first();
+            $firtscolumn = $walikelas->username;
+
+ 
+            DB::table('operator')->where('op_id', '=', $pk)->update([
+                $name => $value
+            ]);
+            switch($name){
+                case "username":
+                    $name = "Nama Pengguna";
+                    $currentvalue = $walikelas->username;
+                    break;
+                default:
+                    "";
+            }
+            if($name === 'password'):
+                DB::table('log_operator')->insert([
+                    'action_id'   => 3,
+                    'op_id'       => Session::get('userId'),
+                    'datetime'    => Carbon::now('GMT+7'),
+                    'description' => 'Edit '.$name.' data walikelas ('.$firtscolumn.')'
+                ]);
+            else: 
+                DB::table('log_operator')->insert([
+                    'action_id'   => 3,
+                    'op_id'       => Session::get('userId'),
+                    'datetime'    => Carbon::now('GMT+7'),
+                    'description' => 'Edit '.$name.' data walikelas ('.$firtscolumn.').'.$currentvalue.' => '.$value
+                ]);
+            endif;
+        else: 
+            $walikelas = DB::table('wali_kelas')->where('id_wali_kelas', '=', $pk)->first();
+            $walikelas1 = DB::table('operator')->where('op_id', '=', $walikelas->op_id)->first();
+            $firtscolumn = $walikelas1->username;
+
+            DB::table('wali_kelas')->where('id_wali_kelas', '=', $pk)->update([
+                $name => $value
+            ]);
+
+            switch($name){
+                case "id_wali_kelas":
+                    $name = "NIP";
+                    $currentvalue = $walikelas->id_wali_kelas;
+                    break;
+                case "fullname":
+                    $name = "Nama Lengkap";
+                    $currentvalue = $walikelas->fullname;
+                    break;
+                case "id_kelas":
+                    $name = "kelas";
+                    $currentvalue = $walikelas->id_kelas;
+                    break;
+                default:
+                    "";
+            }
+
+            DB::table('log_operator')->insert([
+                'action_id'   => 3,
+                'op_id'       => Session::get('userId'),
+                'datetime'    => Carbon::now('GMT+7'),
+                'description' => 'Edit '.$name.' data walikelas ('.$firtscolumn.').'.$currentvalue.' => '.$value
+            ]);
+        endif;
     }
 
     /**
@@ -208,8 +292,22 @@ class PerpusWalikelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $pk           = $request->pk;
+        $op_id        = Session::get('userId');
+        $walikelas = DB::table('wali_kelas')->where('id_wali_kelas', '=', $pk)->join('operator', 'operator.op_id', '=', 'wali_kelas.op_id')->first();
+
+        DB::table('wali_kelas')->where('id_wali_kelas', '=', $pk)->delete();
+        DB::table('operator')->where('op_id', '=', $walikelas->op_id)->delete();
+
+        DB::table('log_operator')->insert([
+            'action_id'   => 2,
+            'op_id'       => $op_id,
+            'datetime'    => Carbon::now('GMT+7'),
+            'description' => 'Hapus data Walikelas ('.$walikelas->username.')'
+        ]);
+
+        return redirect(route('walikelas-view'))->with('success', 'Hapus data telah berhasil');
     }
 }

@@ -37,8 +37,13 @@ class LoginController extends Controller
   
             
             if(Auth::user()->role_id === 1): 
-                $walikelas = DB::table('wali_kelas')->where('op_id', '=', $login->op_id)->first();
-                Session::put('kelas', $walikelas->kelas);
+                $walikelas = DB::table('wali_kelas')
+                             ->join('kelas', 'kelas.id_kelas', '=', 'wali_kelas.id_kelas')
+                             ->where('op_id', '=', $login->op_id)
+                             ->first();
+                Session::put('kelas', $walikelas->id_kelas);
+                Session::put('nama_kelas', $walikelas->nama_kelas);
+                Session::put('kelas_number', $walikelas->kelas);
                 return redirect(route('dashboard-walikelas'));
             elseif(Auth::user()->role_id === 2): 
                 return redirect(route('dashboard-perpus'));

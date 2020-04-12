@@ -24,9 +24,24 @@ class WalikelasDashboardController extends Controller
         $pengembalian = DB::table('pengembalian')->where('op_id', '=', $op_id)->get();
         $buku_hilang = DB::table('buku_hilang')->where('op_id', '=', $op_id)->get();
         // --------- Kelas ---------//
-        $peminjaman_kelas = DB::table('peminjaman')->join('siswa', 'siswa.id_siswa', '=', 'peminjaman.id_siswa')->where('op_id', '=', $op_id)->where('siswa.kelas', '=', $kelas)->get();
-        $pengembalian_kelas = DB::table('pengembalian')->join('siswa', 'siswa.id_siswa', '=', 'pengembalian.id_siswa')->where('op_id', '=', $op_id)->where('siswa.kelas', '=', $kelas)->get();
-        $buku_hilang_kelas = DB::table('buku_hilang')->join('siswa', 'siswa.id_siswa', '=', 'buku_hilang.id_siswa')->where('op_id', '=', $op_id)->where('siswa.kelas', '=', $kelas)->get();
+        $peminjaman_kelas = DB::table('peminjaman')
+                            ->join('siswa', 'siswa.id_siswa', '=', 'peminjaman.id_siswa')
+                            ->join('kelas', 'kelas.id_kelas', '=', 'siswa.id_kelas')
+                            ->where('op_id', '=', $op_id)
+                            ->where('siswa.id_kelas', '=', $kelas)
+                            ->get();
+        $pengembalian_kelas = DB::table('pengembalian')
+                              ->join('siswa', 'siswa.id_siswa', '=', 'pengembalian.id_siswa')
+                              ->join('kelas', 'kelas.id_kelas', '=', 'siswa.id_kelas')
+                              ->where('op_id', '=', $op_id)
+                              ->where('siswa.id_kelas', '=', $kelas)
+                              ->get();
+        $buku_hilang_kelas = DB::table('buku_hilang')
+                             ->join('siswa', 'siswa.id_siswa', '=', 'buku_hilang.id_siswa')
+                             ->join('kelas', 'kelas.id_kelas', '=', 'siswa.id_kelas')
+                             ->where('op_id', '=', $op_id)
+                             ->where('siswa.id_kelas', '=', $kelas)
+                             ->get();
         // --------- end Kelas ---------//
         return view('pages.walikelas.dashboard', compact('role', 'peminjaman', 'pengembalian', 'buku_hilang', 'peminjaman_kelas', 'pengembalian_kelas', 'buku_hilang_kelas'));
     }

@@ -81,7 +81,6 @@
             <td>Nama Buku </td>
             <td>Tanggal Peminjaman </td>
             <td>Kelas </td>
-            <td>Delete</td>
           </tr>
         </thead>
         <tbody>
@@ -94,14 +93,6 @@
             <td>{{ $pmbn->nama_buku }}</td>
             <td>{{ $pmbn->tgl_pengembalian }}</td>
             <td>{{ $pmbn->kelas }}</td>
-            <td>
-              <form action="{{ route('pengembalian-buku-delete') }}" method="post">
-                @csrf
-                @method('DELETE')
-                <input type="hidden" name="pk" value="{{ $pmbn->pengembalian_id }}">
-                <button type="submit" class="templatemo-link">Delete </button>
-              </form>
-            </td>
           </tr> 
           @endforeach           
         </tbody>
