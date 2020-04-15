@@ -20,13 +20,13 @@ class PerpusWalikelasController extends Controller
         $username = '';
         $fullname = '';
         $kelas = '';
-        $api_url = 'http://192.168.1.3:3000/api/perpus/walikelasview';
+        $api_url = 'http://192.168.1.5:3000/api/perpus/walikelasview';
  
         $json_data = file_get_contents($api_url);
         
         $data_walikelas = json_decode($json_data);
 
-        $api_url_kelas = 'http://192.168.1.3:3000/api/kelas';
+        $api_url_kelas = 'http://192.168.1.5:3000/api/kelas';
  
         $json_data_kelas = file_get_contents($api_url_kelas);
         
@@ -42,7 +42,7 @@ class PerpusWalikelasController extends Controller
         $kelas    = $request->kelas;
 
         if($username != NULL && $fullname != NULL && $kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.5:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -50,7 +50,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($username != NULL && $fullname != NULL):
-            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.5:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -58,7 +58,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($username != NULL && $kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.5:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -66,7 +66,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($fullname != NULL && $kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.5:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -74,7 +74,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($username != NULL): 
-            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.5:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -82,7 +82,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($fullname != NULL):
-            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.5:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -90,7 +90,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         elseif($kelas != NULL):
-            $api_url_walikelas = 'http://192.168.1.3:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
+            $api_url_walikelas = 'http://192.168.1.5:3000/api/perpus/walikelassearch?username='.$username.'&fullname='.$fullname.'&kelas='.$kelas;
  
             $json_data_walikelas = file_get_contents($api_url_walikelas);
             
@@ -98,7 +98,7 @@ class PerpusWalikelasController extends Controller
 
             return view('pages.perpustakaan.walikelas', compact('data_walikelas', 'username', 'fullname', 'kelas'));
         else:
-            $api_url = 'http://192.168.1.3:3000/api/perpus/walikelasview';
+            $api_url = 'http://192.168.1.5:3000/api/perpus/walikelasview';
  
             $json_data = file_get_contents($api_url);
             
@@ -109,7 +109,7 @@ class PerpusWalikelasController extends Controller
 
     public function add()
     {
-        $api_url = 'http://192.168.1.3:3000/api/kelas';
+        $api_url = 'http://192.168.1.5:3000/api/kelas';
  
         $json_data = file_get_contents($api_url);
         

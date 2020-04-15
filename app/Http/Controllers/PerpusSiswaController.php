@@ -18,13 +18,13 @@ class PerpusSiswaController extends Controller
     {
         $siswa = '';
         $kelas = '';
-        $api_url = 'http://192.168.1.3:3000/api/perpus/siswaview';
+        $api_url = 'http://192.168.1.5:3000/api/perpus/siswaview';
  
         $json_data = file_get_contents($api_url);
         
         $data_siswa = json_decode($json_data);
 
-        $api_url_kelas = 'http://192.168.1.3:3000/api/kelas';
+        $api_url_kelas = 'http://192.168.1.5:3000/api/kelas';
  
         $json_data_kelas = file_get_contents($api_url_kelas);
         
@@ -38,7 +38,7 @@ class PerpusSiswaController extends Controller
         $kelas = $request->kelas;
 
         if($siswa != NULL && $kelas != NULL): 
-            $api_url = 'http://192.168.1.3:3000/api/perpus/siswasearch?siswa='.$siswa.'&kelas='.$kelas;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/siswasearch?siswa='.$siswa.'&kelas='.$kelas;
  
             $json_data = file_get_contents($api_url);
             
@@ -46,7 +46,7 @@ class PerpusSiswaController extends Controller
 
             return view('pages.perpustakaan.siswa', compact('data_siswa', 'siswa', 'kelas'));
         elseif($siswa != NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/siswasearch?siswa='.$siswa;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/siswasearch?siswa='.$siswa;
  
             $json_data = file_get_contents($api_url);
             
@@ -54,7 +54,7 @@ class PerpusSiswaController extends Controller
 
             return view('pages.perpustakaan.siswa', compact('data_siswa', 'siswa', 'kelas'));
         elseif($kelas != NULL): 
-            $api_url = 'http://192.168.1.3:3000/api/perpus/siswasearch?kelas='.$kelas;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/siswasearch?kelas='.$kelas;
  
             $json_data = file_get_contents($api_url);
             
@@ -62,7 +62,7 @@ class PerpusSiswaController extends Controller
 
             return view('pages.perpustakaan.siswa', compact('data_siswa', 'siswa', 'kelas'));
         else: 
-            $api_url = 'http://192.168.1.3:3000/api/perpus/siswaview';
+            $api_url = 'http://192.168.1.5:3000/api/perpus/siswaview';
  
             $json_data = file_get_contents($api_url);
             
@@ -75,7 +75,7 @@ class PerpusSiswaController extends Controller
 
     public function add()
     {
-        $api_url_kelas = 'http://192.168.1.3:3000/api/kelas';
+        $api_url_kelas = 'http://192.168.1.5:3000/api/kelas';
  
         $json_data_kelas = file_get_contents($api_url_kelas);
         

@@ -24,7 +24,7 @@ class PerpusListBukuController extends Controller
         $tgl_maks_msk = Carbon::now('GMT+7')->toDateString();
 
 
-        $api_url = 'http://192.168.1.3:3000/api/perpus/bukuview';
+        $api_url = 'http://192.168.1.5:3000/api/perpus/bukuview';
  
         $json_data = file_get_contents($api_url);
         
@@ -45,28 +45,28 @@ class PerpusListBukuController extends Controller
 
 
         if($buku != NULL && $kelas != NULL && $tgl_min_pen != NULL && $tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk != NULL): 
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
             $data_buku = json_decode($json_data);
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));            
         elseif($buku != NULL && $kelas != NULL && $tgl_min_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL): 
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
             $data_buku = json_decode($json_data);
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
         elseif($buku != NULL && $kelas != NULL && $tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
             $data_buku = json_decode($json_data);
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
         elseif($buku != NULL && $tgl_min_pen != NULL && $tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -74,7 +74,7 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif($kelas != NULL && $tgl_min_pen != NULL && $tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL): 
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -82,7 +82,7 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif($tgl_min_pen != NULL && $tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?tglminpen='.$tgl_min_pen.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -90,7 +90,7 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif($buku != NULL && $kelas != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&kelas='.$kelas.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -98,7 +98,7 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif($buku != NULL && $tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -106,7 +106,7 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif($buku != NULL && $tgl_min_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -114,7 +114,7 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif( $kelas != NULL && $tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -122,7 +122,7 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif($kelas != NULL && $tgl_min_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
@@ -130,35 +130,35 @@ class PerpusListBukuController extends Controller
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
 
         elseif($tgl_maks_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?tglmaxpen='.$tgl_maks_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
             $data_buku = json_decode($json_data);
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
         elseif($tgl_min_pen != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?tglminpen='.$tgl_min_pen.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
             $data_buku = json_decode($json_data);
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
         elseif($kelas != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?kelas='.$kelas.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
             $data_buku = json_decode($json_data);
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
         elseif($buku != NULL && $tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?buku='.$buku.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?buku='.$buku.'&tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             
             $data_buku = json_decode($json_data);
             return view('pages.perpustakaan.listbuku', compact('data_buku', 'buku', 'kelas', 'tgl_min_pen', 'tgl_maks_pen', 'tgl_min_msk', 'tgl_maks_msk'));
         elseif($tgl_min_msk  != NULL && $tgl_maks_msk!= NULL):
-            $api_url = 'http://192.168.1.3:3000/api/perpus/bukusearch?tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
+            $api_url = 'http://192.168.1.5:3000/api/perpus/bukusearch?tglminmsk='.$tgl_min_msk.'&tglmaxmsk='.$tgl_maks_msk;
  
             $json_data = file_get_contents($api_url);
             

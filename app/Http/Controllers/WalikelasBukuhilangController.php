@@ -23,7 +23,7 @@ class WalikelasBukuhilangController extends Controller
         $op_id       = Session::get('userId');
 
 
-        $api_url = 'http://192.168.1.3:3000/api/walikelas/bukuhilangview?op_id='.$op_id;
+        $api_url = 'http://192.168.1.5:3000/api/walikelas/bukuhilangview?op_id='.$op_id;
  
         $json_data = file_get_contents($api_url);
         
@@ -40,7 +40,7 @@ class WalikelasBukuhilangController extends Controller
         $tgl_maks   = $request->tgl_maks;
         $kelas       = Session::get('userId');
 
-        $api_url = 'http://192.168.1.3:3000/api/walikelas/bukuhilangsearch?nama_siswa='.$nama_siswa.'&nama_buku='.$nama_buku.'&tgl_min='.$tgl_min.'&tgl_maks='.$tgl_maks.'&op_id='.$op_id;
+        $api_url = 'http://192.168.1.5:3000/api/walikelas/bukuhilangsearch?nama_siswa='.$nama_siswa.'&nama_buku='.$nama_buku.'&tgl_min='.$tgl_min.'&tgl_maks='.$tgl_maks.'&op_id='.$op_id;
  
         $json_data = file_get_contents($api_url);
         
@@ -57,7 +57,7 @@ class WalikelasBukuhilangController extends Controller
         $op_id = Session::get('userId');
 
         // ----- data siswa ------//
-        $api_url_data_siswa = 'http://192.168.1.3:3000/api/walikelas/data_siswapengembalian?op_id='.$op_id;
+        $api_url_data_siswa = 'http://192.168.1.5:3000/api/walikelas/data_siswapengembalian?op_id='.$op_id;
  
         $json_data_data_siswa = file_get_contents($api_url_data_siswa);
         
@@ -65,7 +65,7 @@ class WalikelasBukuhilangController extends Controller
         // -----end data siswa ------//
 
         // ----- data buku ------//
-        $api_url_buku = 'http://192.168.1.3:3000/api/Walikelas/data_bukupengembalian';
+        $api_url_buku = 'http://192.168.1.5:3000/api/Walikelas/data_bukupengembalian';
         $json_data_buku = file_get_contents($api_url_buku);
         $buku_all = json_decode($json_data_buku);
         // ----- End data buku ------//
@@ -78,20 +78,20 @@ class WalikelasBukuhilangController extends Controller
         $siswa = $request->id_siswa;
         $buku = $request->buku_id;
         $op_id = Session::get('userId');
-        $api_url_data_siswa = 'http://192.168.1.3:3000/api/walikelas/data_siswapengembalian?op_id='.$op_id;
+        $api_url_data_siswa = 'http://192.168.1.5:3000/api/walikelas/data_siswapengembalian?op_id='.$op_id;
  
         $json_data_data_siswa = file_get_contents($api_url_data_siswa);
         
         $data_siswa_pengembalian = json_decode($json_data_data_siswa);
 
         // ----- data buku ------//
-        $api_url_buku = 'http://192.168.1.3:3000/api/Walikelas/data_bukupengembalian';
+        $api_url_buku = 'http://192.168.1.5:3000/api/Walikelas/data_bukupengembalian';
         $json_data_buku = file_get_contents($api_url_buku);
         $buku_all = json_decode($json_data_buku);
         // ----- End data buku ------//
 
         if($siswa != NULL && $buku != NULL): 
-            $api_url_peminjaman = 'http://192.168.1.3:3000/api/walikelas/data_peminjamanpengembalian?id_siswa='.$siswa.'&buku_id='.$buku;
+            $api_url_peminjaman = 'http://192.168.1.5:3000/api/walikelas/data_peminjamanpengembalian?id_siswa='.$siswa.'&buku_id='.$buku;
  
             $json_data_peminjaman = file_get_contents($api_url_peminjaman);
             
@@ -99,7 +99,7 @@ class WalikelasBukuhilangController extends Controller
 
             return view('pages.walikelas.addbukuhilang', compact('data_peminjaman', 'siswa', 'buku', 'data_siswa_pengembalian', 'buku_all'));
         elseif($siswa != NULL):
-            $api_url_peminjaman = 'http://192.168.1.3:3000/api/walikelas/data_peminjamanpengembalian?id_siswa='.$siswa;
+            $api_url_peminjaman = 'http://192.168.1.5:3000/api/walikelas/data_peminjamanpengembalian?id_siswa='.$siswa;
  
             $json_data_peminjaman = file_get_contents($api_url_peminjaman);
             
@@ -107,7 +107,7 @@ class WalikelasBukuhilangController extends Controller
 
             return view('pages.walikelas.addbukuhilang', compact('data_peminjaman', 'siswa', 'buku', 'data_siswa_pengembalian', 'buku_all'));
         elseif($buku != NULL): 
-            $api_url_peminjaman = 'http://192.168.1.3:3000/api/walikelas/data_peminjamanpengembalian?buku_id='.$buku;
+            $api_url_peminjaman = 'http://192.168.1.5:3000/api/walikelas/data_peminjamanpengembalian?buku_id='.$buku;
  
             $json_data_peminjaman = file_get_contents($api_url_peminjaman);
             

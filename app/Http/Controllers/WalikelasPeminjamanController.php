@@ -24,7 +24,7 @@ class WalikelasPeminjamanController extends Controller
         $op_id       = Session::get('userId');
 
 
-        $api_url = 'http://192.168.1.3:3000/api/walikelas/pemijamanview?op_id='.$op_id;
+        $api_url = 'http://192.168.1.5:3000/api/walikelas/pemijamanview?op_id='.$op_id;
  
         $json_data = file_get_contents($api_url);
         
@@ -41,7 +41,7 @@ class WalikelasPeminjamanController extends Controller
         $tgl_maks   = $request->tgl_maks;
         $op_id       = Session::get('userId');
 
-        $api_url = 'http://192.168.1.3:3000/api/walikelas/peminjamansearch?nama_siswa='.$nama_siswa.'&nama_buku='.$nama_buku.'&tgl_min='.$tgl_min.'&tgl_maks='.$tgl_maks.'&op_id='.$op_id;
+        $api_url = 'http://192.168.1.5:3000/api/walikelas/peminjamansearch?nama_siswa='.$nama_siswa.'&nama_buku='.$nama_buku.'&tgl_min='.$tgl_min.'&tgl_maks='.$tgl_maks.'&op_id='.$op_id;
  
         $json_data = file_get_contents($api_url);
         
@@ -54,13 +54,13 @@ class WalikelasPeminjamanController extends Controller
     {
         $kelas = Session::get('kelas_number');
         // ----- data siswa ------//
-        $api_url_siswa_peminjaman = 'http://192.168.1.3:3000/api/walikelas/data_siswapeminjaman?kelas='.$kelas;
+        $api_url_siswa_peminjaman = 'http://192.168.1.5:3000/api/walikelas/data_siswapeminjaman?kelas='.$kelas;
         $json_data_siswa_peminjaman = file_get_contents($api_url_siswa_peminjaman);
         $siswa_peminjaman = json_decode($json_data_siswa_peminjaman);
         // ----- End data siswa ------//
 
         // ----- data buku ------//
-        $api_url_buku_peminjaman = 'http://192.168.1.3:3000/api/walikelas/data_bukupeminjaman?kelas='.$kelas;
+        $api_url_buku_peminjaman = 'http://192.168.1.5:3000/api/walikelas/data_bukupeminjaman?kelas='.$kelas;
         $json_data_buku_peminjaman = file_get_contents($api_url_buku_peminjaman);
         $buku_peminjaman = json_decode($json_data_buku_peminjaman);
         // ----- End data buku ------//
